@@ -1,0 +1,19 @@
+load("@rules_go//go:def.bzl", "go_library", "go_source", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "archcode.go",
+        "wrap_arch_code_amd64.s",
+    ],
+    cgo = True,
+    cdeps = ["//src:archcode"],
+    importpath = "github.com/eljobe/sysos/archcode",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["archcode_test.go"],
+    embed = [":go_default_library"],
+)
