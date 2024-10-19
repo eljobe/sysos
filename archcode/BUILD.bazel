@@ -5,15 +5,19 @@ go_library(
     srcs = [
         "archcode.go",
         "wrap_arch_code_amd64.s",
+        "archcode_amd64.syso", # source of error
     ],
-    cgo = True,
-    cdeps = ["//src:archcode"],
+    # Hack: No symbols :(
+    # cgo = True,
+    # cdeps = ["//src:archcode"],
     importpath = "github.com/eljobe/sysos/archcode",
     visibility = ["//visibility:public"],
 )
 
 go_test(
     name = "go_default_test",
-    srcs = ["archcode_test.go"],
+    srcs = [
+        "archcode_test.go",
+    ],
     embed = [":go_default_library"],
 )

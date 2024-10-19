@@ -2,7 +2,7 @@
 load("@gazelle//:def.bzl", "gazelle")
 load("@rules_go//go:def.bzl", "TOOLS_NOGO", "nogo", "go_binary")
 
-# gazelle:prefix github.com/OffchainLabs/bold
+# gazelle:prefix github.com/eljobe/sysos
 gazelle(name = "gazelle")
 
 nogo(
@@ -15,9 +15,7 @@ go_binary(
     name = "arch_name",
     srcs = [
         "main.go",
-        "prebuilt/archcode_amd64.syso",
+        # Hack "prebuilt/archcode_amd64.syso",
     ],
-    # cgo = True,
-    # cdeps = ["//src:archcode"],
     deps = ["//archcode:go_default_library"],
 )

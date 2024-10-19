@@ -10,7 +10,7 @@ const (
 	ArchARM64
 )
 
-// GetArchCode is implemented in assembly and C (arch_code.c)
+// GetArchCode is implemented in assembly and C (archcode.c)
 //go:noescape
 func GetArchCode() int32
 
